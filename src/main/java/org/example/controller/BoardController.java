@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-@Controller
+@Controller // @RestController (JSON)
 public class BoardController { //POJO -> new BoardController(); -> Spring Container--->DI(의존성주입)
 
     @Autowired
@@ -29,11 +29,9 @@ public class BoardController { //POJO -> new BoardController(); -> Spring Contai
        // 객체바인딩
         model.addAttribute("list", list);
         // view의 논리적린 이름 리턴-->프론트컨트롤러에게 리턴
-        return "board/list";
+        return "board/list"; // list.jsp
     }
     // 등록하기 요청받기
-
-
 
 
 }

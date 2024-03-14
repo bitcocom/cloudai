@@ -6,4 +6,14 @@
     <select id="boardList" resultType="org.example.entity.Board">
         select * from board order by num desc
     </select>
+
+    <insert id="boardInsert" parameterType="org.example.entity.Board" >
+          insert into board(title, content, writer)
+          values(#{title}, #{content}, #{writer})
+    </insert>
+
+    <delete id="boardDelete" parameterType="Long">
+        delete from board where num=#{num}
+    </delete>
+
 </mapper>
