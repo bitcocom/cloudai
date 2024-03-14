@@ -14,7 +14,7 @@ import java.util.List;
 public class BoardController { //POJO -> new BoardController(); -> Spring Container--->DI(의존성주입)
 
     @Autowired
-    private BoardMapper mapper;
+    private BoardMapper mapper;  // SqlSessionFactoryBean
 
    // http://localhost:8081/myweb/spring
     @RequestMapping("/spring")
@@ -29,7 +29,7 @@ public class BoardController { //POJO -> new BoardController(); -> Spring Contai
        // 객체바인딩
         model.addAttribute("list", list);
         // view의 논리적린 이름 리턴-->프론트컨트롤러에게 리턴
-        return "list";
+        return "board/list";
     }
     // 등록하기 요청받기
 

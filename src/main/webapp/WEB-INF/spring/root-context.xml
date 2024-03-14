@@ -4,8 +4,22 @@
        xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
        xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 
+      <!-- CP : HikariCP-->
+     <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+           <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+           <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/ai"/>
+           <property name="username" value="root"/>
+          <property name="password" value="12345"/>
+      </bean>
+     <bean id="hikariDataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+         <constructor-arg ref="hikariConfig"/>
+     </bean>
 
+     <bean class="org.mybatis.spring.SqlSessionFactoryBean">
+         <property name="dataSource" ref="hikariDataSource"/>
+         <property name="mapperLocations" value="classpath:mybatis-config/mapper/**.xml"/>
+     </bean>
 
-
+     <mybatis-spring:scan base-package="org.example.repository"/>
 
 </beans>
