@@ -15,6 +15,13 @@ public class BoardController { //POJO -> new BoardController(); -> Spring Contai
 
     @Autowired
     private BoardMapper mapper;
+
+   // http://localhost:8081/myweb/spring
+    @RequestMapping("/spring")
+    public String index(){
+        return "template"; // /WEB-INF/views/template.jsp
+    }
+
     // 리스트 가져오기 요청받기
     @RequestMapping("/list") // Handler Mapping
     public String list(Model model){
