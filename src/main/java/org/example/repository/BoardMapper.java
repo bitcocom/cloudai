@@ -12,5 +12,6 @@ public interface BoardMapper { // public class  SqlSessionFactoryBean  implement
     public List<Board> boardList();
     public int boardInsert(Board board); // 1, 0
     public  int boardDelete(Long num);
-
+    public Board getByNum(Long num);
+    public int boardUpdate(Board board); // 번호, 제목, 내용 -> Board
 }

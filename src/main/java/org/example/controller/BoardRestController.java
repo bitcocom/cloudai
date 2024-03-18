@@ -3,6 +3,8 @@ package org.example.controller;
 import org.example.entity.Board;
 import org.example.repository.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -38,7 +40,19 @@ public class BoardRestController { //POJO -> new BoardController(); -> Spring Co
     public int boardDelete(@PathVariable Long num){
          return mapper.boardDelete(num);
     }
-    // getBynum(Long num)
-    // boardUpdate(Long num, Board board)
 
+    @GetMapping("/board/{num}")
+    public ResponseEntity<?> getBynum(@PathVariable Long num){
+        Board board=mapper.getByNum(num);
+        if(board!=null) {
+            return new ResponseEntity<>(board, HttpStatus.OK); // X, O ->예외처리
+        }else{
+            return new ResponseEntity<>("실패", HttpStatus.BAD_REQUEST); // X, O ->예외처리
+        }
+    }
+    @PutMapping("/board/{num}")
+    public ResponseEntity<?> boardUpdate(@PathVariable Long num,@RequestBody  Board board){
+        board.setNum(num); // ?
+        return new ResponseEntity<>(mapper.boardUpdate(board), HttpStatus.OK);
+    }
 }

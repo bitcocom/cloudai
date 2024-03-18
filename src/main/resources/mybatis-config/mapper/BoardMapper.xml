@@ -16,4 +16,13 @@
         delete from board where num=#{num}
     </delete>
 
+    <select id="getByNum" resultType="org.example.entity.Board">
+         select * from board where num=#{num}
+    </select>
+
+    <update id="boardUpdate" parameterType="org.example.entity.Board">
+         update board set title=#{title}, content=#{content}
+         where num=#{num}
+    </update>
+
 </mapper>

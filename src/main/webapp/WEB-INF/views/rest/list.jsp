@@ -13,7 +13,10 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-
+  <script src="${cpath}/resources/js/boardList.js"></script>
+  <script>
+       boardList(); // javascript 호출
+  </script>
 </head>
 <body>
 
@@ -22,7 +25,7 @@
   <div class="card">
     <div class="card-header">BOARD</div>
     <div class="card-body">
-        <table class="table table-hover table-bordered">
+        <table id="boardList" class="table table-hover table-bordered">
             <thead>
               <tr>
                 <th>번호</th>
@@ -33,15 +36,7 @@
               </tr>
             </thead>
             <tbody>
-            <c:forEach var="board" items="${list}">
-              <tr>
-                <td>${board.num}</td>
-                <td><a href="${cpath}/get/${board.num}">${board.title}</a></td>
-                <td>${board.writer}</td>
-                <td><fmt:formatDate value="${board.indate}" pattern="yyyy-MM-dd" /></td>
-                <td>${board.cnt}</td>
-              </tr>
-            </c:forEach>
+             <!-- 여기에 게시판 리스트를 출력(JS) -->
             </tbody>
           </table>
           <button class="btn btn-primary btn-sm" onClick="location.href='${cpath}/register'">글쓰기</button>

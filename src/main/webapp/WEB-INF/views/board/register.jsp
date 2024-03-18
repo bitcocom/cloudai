@@ -22,29 +22,22 @@
   <div class="card">
     <div class="card-header">BOARD</div>
     <div class="card-body">
-        <table class="table table-hover table-bordered">
-            <thead>
-              <tr>
-                <th>번호</th>
-                <th>제목</th>
-                <th>작성자</th>
-                <th>작성일</th>
-                <th>조회수</th>
-              </tr>
-            </thead>
-            <tbody>
-            <c:forEach var="board" items="${list}">
-              <tr>
-                <td>${board.num}</td>
-                <td><a href="${cpath}/get/${board.num}">${board.title}</a></td>
-                <td>${board.writer}</td>
-                <td><fmt:formatDate value="${board.indate}" pattern="yyyy-MM-dd" /></td>
-                <td>${board.cnt}</td>
-              </tr>
-            </c:forEach>
-            </tbody>
-          </table>
-          <button class="btn btn-primary btn-sm" onClick="location.href='${cpath}/register'">글쓰기</button>
+       <form action="${cpath}/register" method="post">
+         <div class="form-group">
+           <label for="title">제목:</label>
+           <input type="text" class="form-control" placeholder="Enter title" id="title" name="title">
+         </div>
+         <div class="form-group">
+           <label for="content">내용:</label>
+          <textarea rows="10" class="form-control" id="content" name="content"></textarea>
+         </div>
+          <div class="form-group">
+            <label for="title">작성자:</label>
+            <input type="text" class="form-control" placeholder="Enter  writer" id="writer" name="writer">
+           </div>
+         <button type="submit" class="btn btn-primary btn-sm">등록</button>
+         <button type="reset" class="btn btn-danger btn-sm">취소</button>
+       </form>
     </div>
     <div class="card-footer">클라우드기반 인공지능 서비스 엔지니어링과정(박매일)</div>
   </div>
