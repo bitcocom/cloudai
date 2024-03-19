@@ -32,7 +32,7 @@ function getBoardDetail(num){
                            <td>${board.cnt}</td>
                      </tr>
               </table>
-              <button type="button" class="btn btn-primary btn-sm">수정</button>
+              <button type="button" class="btn btn-primary btn-sm" onClick="goUpdateGet(${board.num})">수정</button>
               <button type="button" class="btn btn-danger btn-sm" onClick="goDelete(${board.num})">삭제</button>
               <button type="button" class="btn btn-info btn-sm">목록</button>
            `;
@@ -49,12 +49,18 @@ function getBoardDetail(num){
         method : "DELETE"
       })
     .then(function(res){
+       console.log("1", res);
+       console.log("2",res.ok);
         if(!res.ok){
             throw new Error("Network response was not ok");
         }
-        location.href="/myweb/rest/list";
+         location.href="/myweb/rest/list";
       })
     .catch(function(error){
         console.log(error);
      });
+  }
+
+  function goUpdateGet(num){
+       location.href="/myweb/rest/update/"+num; // RouterController
   }

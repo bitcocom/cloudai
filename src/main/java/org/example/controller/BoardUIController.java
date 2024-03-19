@@ -26,4 +26,10 @@ public class BoardUIController {  // View로 이동해주는 컨트롤러(Router
             model.addAttribute("num",  num);
             return "rest/get"; //get.jsp
       }
+
+      @GetMapping("/update/{num}")
+      public String updateGet(Model model, @PathVariable Long num){
+          model.addAttribute("num", num);
+          return "rest/update"; // update.jsp
+      }
 }
