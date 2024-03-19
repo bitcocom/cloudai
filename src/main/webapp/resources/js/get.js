@@ -33,7 +33,7 @@ function getBoardDetail(num){
                      </tr>
               </table>
               <button type="button" class="btn btn-primary btn-sm">수정</button>
-              <button type="button" class="btn btn-danger btn-sm">삭제</button>
+              <button type="button" class="btn btn-danger btn-sm" onClick="goDelete(${board.num})">삭제</button>
               <button type="button" class="btn btn-info btn-sm">목록</button>
            `;
            document.getElementById("getDetail").innerHTML=boardTable;
@@ -42,3 +42,19 @@ function getBoardDetail(num){
            console.log(error);
       });
  }
+
+ function goDelete(num){
+    let deleteUrl="http://localhost:8081/myweb/api/board/"+num;
+    fetch(deleteUrl, {
+        method : "DELETE"
+      })
+    .then(function(res){
+        if(!res.ok){
+            throw new Error("Network response was not ok");
+        }
+        location.href="/myweb/rest/list";
+      })
+    .catch(function(error){
+        console.log(error);
+     });
+  }
