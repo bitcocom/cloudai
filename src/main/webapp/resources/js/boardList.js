@@ -16,12 +16,14 @@ function boardList(){
           tbody.innerHTML='';
           boards.forEach(function(board){
           let tr=document.createElement("tr"); // <tr></tr>
-          tr.innerHTML='<td>'+board.num+'</td>'+
-                                       '<td>'+board.title+'</td>'+
-                                       '<td>'+board.writer+'</td>'+
-                                       '<td>'+board.indate+'</td>'+
-                                       '<td>'+board.cnt+'</td>';
+          tr.innerHTML="<td>"+board.num+"</td>"+
+                                       "<td><a href='/myweb/rest/get/"+board.num+"'>"+board.title+"</a></td>"+
+                                       "<td>"+board.writer+"</td>"+
+                                       "<td>"+board.indate+"</td>"+
+                                       "<td>"+board.cnt+"</td>";
             tbody.append(tr);
            });
      });
 }
+
+

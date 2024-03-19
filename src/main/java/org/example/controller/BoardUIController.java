@@ -1,7 +1,9 @@
 package org.example.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -19,4 +21,9 @@ public class BoardUIController {  // View로 이동해주는 컨트롤러(Router
           return "rest/register"; // register.jsp
       }
 
+      @GetMapping("/get/{num}")
+      public String get(@PathVariable Long num, Model model){
+            model.addAttribute("num",  num);
+            return "rest/get"; //get.jsp
+      }
 }

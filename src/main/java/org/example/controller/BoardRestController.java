@@ -41,6 +41,7 @@ public class BoardRestController { //POJO -> new BoardController(); -> Spring Co
          return mapper.boardDelete(num);
     }
 
+    // GET  : http://localhost:8081/myweb/api/board/4 : 게시판상세보기
     @GetMapping("/board/{num}")
     public ResponseEntity<?> getBynum(@PathVariable Long num){
         Board board=mapper.getByNum(num);
