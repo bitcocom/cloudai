@@ -21,7 +21,7 @@ function updateDetail(num){
                          <td><textarea rows="10" class="form-control" id="content" name="content">${board.content}</textarea></td>
                        </tr>
                   </table>
-                  <button type="button" class="btn btn-sm btn-primary">수정</button>
+                  <button type="button" class="btn btn-sm btn-primary" onClick="goUpdatePost(${board.num})">수정</button>
                   <button type="reset" class="btn btn-sm btn-danger">취소</button>
                   <button type="button" class="btn btn-sm btn-info" onClick="location.href='/myweb/rest/list'">목록</button>
                   </form>
@@ -31,4 +31,29 @@ function updateDetail(num){
     .catch(function(error){
          console.log(error);
       });
+}
+function goUpdatePost(num){
+    let num1=parseInt(document.getElementById("num").value);
+    let title=document.getElementById("title").value;
+    let content=document.getElementById("content").value;
+    let updateData={
+       num : num1,
+       title : title,
+       content : content
+    }
+    // 수정하기(POST)
+   fetch("http://localhost:8081/myweb/api/board/"+num,{
+        method : "PUT",
+        headers: {
+                 "Content-Type" : "application/json"
+             },
+        body : JSON.stringify(updateData)
+       })
+   .then(function(res){
+         // if
+          location.href="/myweb/rest/list";
+     })
+   .catch(function(error){
+        console.log(error);
+     });
 }
