@@ -32,6 +32,9 @@ function getBoardDetail(num){
                            <td>${board.cnt}</td>
                      </tr>
               </table>
+              <button type="button" class="btn btn-primary btn-sm">수정</button>
+              <button type="button" class="btn btn-danger btn-sm">삭제</button>
+              <button type="button" class="btn btn-info btn-sm">목록</button>
            `;
            document.getElementById("getDetail").innerHTML=boardTable;
        })
