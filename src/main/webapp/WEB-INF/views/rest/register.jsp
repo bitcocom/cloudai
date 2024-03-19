@@ -13,10 +13,7 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="${cpath}/resources/js/boardList.js"></script>
-  <script>
-       boardList(); // javascript 호출
-  </script>
+  <script src="${cpath}/resources/js/register.js"></script>
 </head>
 <body>
 
@@ -25,21 +22,22 @@
   <div class="card">
     <div class="card-header">BOARD</div>
     <div class="card-body">
-        <table id="boardList" class="table table-hover table-bordered">
-            <thead>
-              <tr>
-                <th>번호</th>
-                <th>제목</th>
-                <th>작성자</th>
-                <th>작성일</th>
-                <th>조회수</th>
-              </tr>
-            </thead>
-            <tbody>
-             <!-- 여기에 게시판 리스트를 출력(JS) -->
-            </tbody>
-          </table>
-          <button class="btn btn-primary btn-sm" onClick="location.href='${cpath}/rest/register'">글쓰기</button>
+       <form>
+         <div class="form-group">
+           <label for="title">제목:</label>
+           <input type="text" class="form-control" placeholder="Enter title" id="title" name="title">
+         </div>
+         <div class="form-group">
+           <label for="content">내용:</label>
+          <textarea rows="10" class="form-control" id="content" name="content"></textarea>
+         </div>
+          <div class="form-group">
+            <label for="title">작성자:</label>
+            <input type="text" class="form-control" placeholder="Enter  writer" id="writer" name="writer">
+           </div>
+         <button type="button" class="btn btn-primary btn-sm" onclick="goRegister()">등록</button>
+         <button type="reset" class="btn btn-danger btn-sm">취소</button>
+       </form>
     </div>
     <div class="card-footer">클라우드기반 인공지능 서비스 엔지니어링과정(박매일)</div>
   </div>

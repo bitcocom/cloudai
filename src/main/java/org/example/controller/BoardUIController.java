@@ -14,5 +14,9 @@ public class BoardUIController {  // View로 이동해주는 컨트롤러(Router
           // DB에서 데이터를 가져오기 -> View
           return "rest/list";  // list.jsp(Ajax)
       }
+      @GetMapping("/register")
+      public String register(){
+          return "rest/register"; // register.jsp
+      }
 
 }
