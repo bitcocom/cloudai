@@ -12,7 +12,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 // servlet-context.xml
 @Configuration
 @EnableWebMvc //  <annotation-driven />
-@ComponentScan(basePackages = "org.example.controller")
+@ComponentScan(basePackages = {"org.example.controller","org.example.service"})
 public class ServletConfig implements WebMvcConfigurer {
 
     @Override

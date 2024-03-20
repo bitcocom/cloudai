@@ -33,7 +33,7 @@ public class BoardController { //POJO -> new BoardController(); -> Spring Contai
        // 객체바인딩
         model.addAttribute("list", list);
         // view의 논리적린 이름 리턴-->프론트컨트롤러에게 리턴
-        return "board/list"; // list.jsp
+        return "board/list"; // list.jsp<-- 인증여부를 체크
     }
     // 등록화면이동
     @GetMapping("/register")

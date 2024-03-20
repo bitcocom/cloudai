@@ -20,7 +20,23 @@
 <div class="container">
   <h2>Spring Web MVC</h2>
   <div class="card">
-    <div class="card-header">BOARD</div>
+    <div class="card-header">
+     <c:if test="${empty member}">
+     <form class="form-inline" action="${cpath}/login" method="post">
+       <label for="username">아이디:</label>
+       <input type="text" class="form-control" placeholder="Enter username" name="username" id="username">
+       <label for="password">패스워드:</label>
+       <input type="password" class="form-control" placeholder="Enter password" name="password" id="password">
+       <button type="submit" class="btn btn-primary">로그인</button>
+     </form>
+     </c:if>
+     <c:if test="${!empty member}">
+          <form class="form-inline" action="${cpath}/logout" method="post">
+               <label>${member.username}(${member.name})</label>
+               <button type="submit" class="btn btn-primary">로그아웃</button>
+           </form>
+     </c:if>
+    </div>
     <div class="card-body">
         <table class="table table-hover table-bordered">
             <thead>
